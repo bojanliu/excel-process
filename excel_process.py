@@ -23,7 +23,7 @@ industries={'[1]':'Computer Products','[2]':'Auto Parts & Accessories',#行业�
             '[26]':'Industrial Equipment & Components','[27]':'Instruments & Meters',}
 
 file_name=u'刘_7月份客户效果加强名单(0~5封).xls' #待处理文件名
-wb=xlrd.open_workbook(os.path.abspath('..')+'\\'+file_name.encode('gbk'))#打开Exel
+wb=xlrd.open_workbook(os.path.abspath('..')+'\\'+file_name.encode('gbk'))#打开Excel
 sh=wb.sheet_by_index(0)  #获取第一张sheet对象
 row_count=sh.nrows  #行数
 col_count=sh.ncols  #列数
@@ -39,7 +39,7 @@ if col_count==25:   #简单的检查机制：看原文件是否为25个字段
         i+=1
     for i in range(1,row_count):   
         ws.write(i,0,sh.cell_value(i,2)) #写入公司名称
-        ws.write(i,1,sh.cell_value(i,0)) #写入公司ID
+        ws.write(i,1,int(sh.cell_value(i,0))) #写入公司ID ID须为数值型
         ws.write(i,2,   #将原表格中几列的产品词合并写入到新文件的一列当中
                  sh.cell_value(i,4)+r', '+sh.cell_value(i,5)+r', '+
                  sh.cell_value(i,6)+r', '+sh.cell_value(i,7)+r', '+
